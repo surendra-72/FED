@@ -23,7 +23,10 @@
                 acc[category].push(product);
                 return acc;
             },{});
-
+            const avgPriceByCategory = Object.keys(productsByCategory).map(category => {
+                const sum = productsByCategory[category].reduce(acc, product) => acc + product.price,0);
+                return {category: category, average: sum/productsByCategory[category].length};
+            });
             const highPricedCategories = avgPriceByCategory.filter(category => category.average > 50);
             console.log(highPricedCategories);
         </script>
