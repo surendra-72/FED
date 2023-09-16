@@ -23,7 +23,7 @@ class ArrayOfObjects extends Component {
                         <th>Country Name</th>
                         <th>Capital</th>
                     </tr>
-                    {CountriesInfo.length>0&&CountriesInfo.map((Counter)=>{
+                    {CountriesInfo.length>0&&CountriesInfo.map((Country)=>{
                         return <tr key={Country.name}>
                             <td>{Country.name}</td>
                             <td>{Country.Capital}</td>
