@@ -1,31 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React,{Component} from "react";
 
-const date = new Date();
+class DigitalClock extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            time:""
+        };
+    }
+    componentDidMount() {
+        this.tick();
+    }
+    tick = () => {
+        const hours = new Date().getHours();
+        const minutes = new Date().getMinutes();
+        const seconds = new Date().getSeconds();
+        const updatedTime = `${hours}:${minutes}:${seconds}`;
+        this.setState({time:updatedTime}); 
+    };
 
-export default function DigitalClock() {
-  const [dateTime, setDateTime] = useState({
-    hours: date.getHours(),
-    minutes: date.getMinutes(),
-    seconds: date.getSeconds()
-  });
+    componentDidUpdate(prevProps,prevstate) {
+        if(this.state.time !== prevstate.time) {
+            this.interval = setInterval(()=>{
+                this.tick();
+            },1000);
+        }
+    }
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const date = new Date();
-      setDateTime({
-        hours: date.getHours(),
-        minutes: date.getMinutes(),
-        seconds: date.getSeconds()
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
 
-  return (
-    <div className="App">
-      <div>
-        {dateTime.hours}:{dateTime.minutes}:{dateTime.seconds}
-      </div>
-    </div>
-  );
+    render() {
+        return <div><h1>Digital Clock</h1><h1>{this.state.time}</h1></div>
+    }
 }
+
+export default DigitalClock
