@@ -9,7 +9,7 @@ export default function BmiCalculator() {
     const heightInMeters = height / 100;
     const bmiValue = weight / (heightInMeters * heightInMeters);
     const roundedBmi = Math.round(bmiValue * 100) / 100;
-    console.log(roundedBmi);
+    console.log(roundedBmi)
 
     if (roundedBmi < 16) {
       window.alert("Hi..." + name + ", You are underweight");
