@@ -6,9 +6,9 @@ class ArrayOfObjects extends Component {
         this.state = {
             CountriesInfo: [
                 {name:'India',Capital:"NewDelhi"},
-                {name:'India',Capital:"NewDelhi"},
-                {name:'India',Capital:"NewDelhi"},
-                {name:'India',Capital:"NewDelhi"},
+                {name:'England',Capital:"London"},
+                {name:'Japan',Capital:"Tokyo"},
+                {name:'China',Capital:"Beijing"},
             ]
         }
     }
